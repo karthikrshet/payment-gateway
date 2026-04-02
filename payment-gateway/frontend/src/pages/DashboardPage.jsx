@@ -63,7 +63,7 @@ export default function DashboardPage() {
   );
 
   return (
-    <div className="p-8 max-w-7xl mx-auto animate-fade-in">
+  <div className="p-4 lg:p-8 max-w-7xl mx-auto animate-fade-in">
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-2xl font-semibold text-white">
@@ -73,7 +73,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Stat Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
         <StatCard label="Total Payments" value={stats?.total || 0} icon="💳"
           color="#e2e8f0" sub={`All time`} />
         <StatCard label="Revenue Captured" value={<AmountDisplay amount={+(stats?.total_captured_amount || 0)} />}

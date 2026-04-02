@@ -25,7 +25,7 @@ function ProtectedLayout() {
   return (
     <div className="flex min-h-screen">
       <Sidebar />
-      <main className="flex-1 ml-64 min-h-screen overflow-y-auto">
+     <main className="flex-1 lg:ml-64 min-h-screen overflow-y-auto pt-14 lg:pt-0 pb-16 lg:pb-0">
         <Outlet />
       </main>
     </div>
