@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --surface-900: #0a0f0d;
+  --surface-800: #111915;
+  --surface-700: #182320;
+  --surface-600: #1e2e28;
+  --brand-400: #34d399;
+  --brand-500: #10b981;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background-color: var(--surface-900);
+  color: #e2e8f0;
+  font-family: 'DM Sans', sans-serif;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--surface-800); }
+::-webkit-scrollbar-thumb { background: #2d3748; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #4a5568; }
+
+/* Custom classes */
+.card {
+  @apply bg-surface-800 border border-white border-opacity-5 rounded-2xl;
+}
+.btn-primary {
+  @apply bg-brand-500 hover:bg-brand-600 text-white font-medium px-4 py-2 rounded-xl transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 focus:ring-offset-surface-900;
+}
+.btn-ghost {
+  @apply bg-transparent hover:bg-white hover:bg-opacity-5 text-slate-400 hover:text-white font-medium px-4 py-2 rounded-xl transition-all duration-150;
+}
+.input {
+  @apply bg-surface-700 border border-white border-opacity-10 rounded-xl px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all w-full;
+}
+
+.status-badge {
+  @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium;
+}
+.status-created    { @apply bg-slate-800 text-slate-300; }
+.status-authorized { @apply bg-blue-900 bg-opacity-50 text-blue-300; }
+.status-captured   { @apply bg-emerald-900 bg-opacity-50 text-emerald-300; }
+.status-refunded   { @apply bg-amber-900 bg-opacity-50 text-amber-300; }
+.status-failed     { @apply bg-red-900 bg-opacity-50 text-red-300; }
+.status-cancelled  { @apply bg-slate-800 text-slate-500; }
+
+.webhook-delivered { @apply bg-emerald-900 bg-opacity-50 text-emerald-300; }
+.webhook-pending   { @apply bg-yellow-900 bg-opacity-50 text-yellow-300; }
+.webhook-retrying  { @apply bg-blue-900 bg-opacity-50 text-blue-300; }
+.webhook-failed    { @apply bg-red-900 bg-opacity-50 text-red-300; }
