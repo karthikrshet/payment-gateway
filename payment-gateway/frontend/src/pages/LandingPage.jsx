@@ -228,7 +228,7 @@ export default function LandingPage() {
             >{l}</a>
           ))}
         </div>
-        <a href="http://localhost:3000" style={{
+        <a href="https://payment-gateway-frontend.up.railway.app/" style={{
           fontSize: 13, fontFamily: "'JetBrains Mono', monospace",
           background: "#4ade80", color: "#080c10",
           border: "none", borderRadius: 6, padding: "7px 16px",
@@ -266,7 +266,7 @@ export default function LandingPage() {
         </p>
 
         <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-          <a href="http://localhost:3000" style={{
+          <a href="https://payment-gateway-frontend.up.railway.app/" style={{
             background: "#4ade80", color: "#080c10", fontWeight: 700,
             fontSize: 14, padding: "12px 28px", borderRadius: 8,
             textDecoration: "none", transition: "transform 0.15s",
@@ -444,7 +444,7 @@ export default function LandingPage() {
           <p style={{ color: "#64748b", fontSize: 16, marginBottom: 32, lineHeight: 1.6 }}>
             Run the full stack locally and walk through a complete payment lifecycle — from intent to refund.
           </p>
-          <a href="http://localhost:3000" style={{
+          <a href="https://payment-gateway-frontend.up.railway.app/" style={{
             display: "inline-block",
             background: "linear-gradient(135deg, #4ade80, #22d3ee)",
             color: "#080c10", fontWeight: 700, fontSize: 15,
