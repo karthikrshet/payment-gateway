@@ -6,12 +6,19 @@ import { StatusBadge, AmountDisplay, TimeDisplay, Spinner, EmptyState } from '..
 
 const STATUSES = ['', 'created', 'authorized', 'captured', 'refunded', 'failed'];
 
+function generateKey() {
+  if (typeof window !== 'undefined' && window.crypto?.randomUUID) {
+    return `idem_${window.crypto.randomUUID()}`;
+  }
+  return `idem_${uuidv4()}`;
+}
+
 function CreatePaymentModal({ onClose, onCreated }) {
   const [form, setForm] = useState({
     amount: '', currency: 'INR', description: '', customer_name: '', customer_email: '',
   });
   const [useIdempotency, setUseIdempotency] = useState(true);
-  const [idempotencyKey] = useState(`idem_${uuidv4()}`);
+  const [idempotencyKey] = useState(generateKey);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 

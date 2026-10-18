@@ -1,7 +1,7 @@
 {
   "name": "payment-gateway-backend",
   "version": "1.0.0",
-  "description": "Stripe-inspired payment gateway backend",
+  "description": "Production-grade, Stripe-inspired payment gateway backend featuring ACID state machine, idempotent APIs, and HMAC webhook engine",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",

@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const { query } = require('../db');
 
+const JWT_SECRET = process.env.JWT_SECRET || 'dev_jwt_secret_change_in_production';
+
 async function register(req, res, next) {
   try {
     const { email, password, name } = req.body;
@@ -22,7 +24,7 @@ async function register(req, res, next) {
     );
 
     const user = result.rows[0];
-    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN || '7d' });
+    const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN || '7d' });
 
     res.status(201).json({ token, user });
   } catch (err) {
@@ -43,7 +45,7 @@ async function login(req, res, next) {
     const match = await bcrypt.compare(password, user.password_hash);
     if (!match) return res.status(401).json({ error: 'Invalid credentials' });
 
-    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN || '7d' });
+    const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN || '7d' });
 
     res.json({ token, user: { id: user.id, email: user.email, name: user.name, api_key: user.api_key } });
   } catch (err) {

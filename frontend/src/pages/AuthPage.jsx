@@ -75,8 +75,6 @@ export default function AuthPage() {
     textDecoration: "none", fontWeight: 600,
   }}>← Home</a>
 </nav>
-<div className="min-h-screen flex items-center justify-center px-4" 
-  style={{ background: 'var(--surface-900)', paddingTop: 56 }}></div>
 
       {/* Background grid */}
       <div className="fixed inset-0 opacity-5" style={{
@@ -84,16 +82,7 @@ export default function AuthPage() {
         backgroundSize: '48px 48px'
       }} />
 
-      <div className="relative w-full max-w-md animate-slide-up">
-        <div className="text-center mb-4">
-  <a href="/landing" style={{
-    display: "inline-flex", alignItems: "center", gap: 6,
-    fontSize: 13, color: "#4ade80", textDecoration: "none",
-    fontFamily: "monospace", opacity: 0.8,
-  }}>
-    {/* ← Back to Home */}
-  </a>
-</div>
+      <div className="relative w-full max-w-md animate-slide-up pt-16">
         {/* Logo */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-brand-500 bg-opacity-20 border border-brand-500 border-opacity-30 mb-4">

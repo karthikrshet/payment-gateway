@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
 const { query } = require('../db');
 
+const JWT_SECRET = process.env.JWT_SECRET || 'dev_jwt_secret_change_in_production';
+
 // JWT Authentication (for dashboard/UI)
 const authenticateJWT = async (req, res, next) => {
   const authHeader = req.headers.authorization;
@@ -11,7 +13,7 @@ const authenticateJWT = async (req, res, next) => {
 
   const token = authHeader.split(' ')[1];
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, JWT_SECRET);
     const result = await query('SELECT id, email, name FROM users WHERE id = $1', [decoded.userId]);
     if (!result.rows.length) return res.status(401).json({ error: 'User not found' });
     req.user = result.rows[0];
