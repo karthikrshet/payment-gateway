@@ -27,7 +27,29 @@ router.delete('/webhooks/endpoints/:id', authenticate, webhookCtrl.deleteEndpoin
 router.get('/webhooks/events', authenticate, webhookCtrl.listEvents);
 router.post('/webhooks/events/:id/retry', authenticate, webhookCtrl.retryEvent);
 
+const { query } = require('../db');
+
 // ── Health ────────────────────────────────────────────────────────────────────
-router.get('/health', (req, res) => res.json({ status: 'ok', timestamp: new Date() }));
+router.get('/health', async (req, res) => {
+  try {
+    const start = Date.now();
+    await query('SELECT 1');
+    const latency = Date.now() - start;
+    res.json({
+      status: 'ok',
+      database: 'connected',
+      dbLatencyMs: latency,
+      timestamp: new Date().toISOString(),
+      uptimeSeconds: Math.floor(process.uptime()),
+    });
+  } catch (err) {
+    res.status(503).json({
+      status: 'error',
+      database: 'disconnected',
+      error: err.message,
+      timestamp: new Date().toISOString(),
+    });
+  }
+});
 
 module.exports = router;
